@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog
 
 
-class ThumbnailCreator:
+class ThumbnailCreatorGUI:
     def __init__(self):
         self.root = Tk()
         self.root.title("ThumbnailCreator")
@@ -53,7 +53,3 @@ class ThumbnailCreatorBackground:
 
     def choose_file(self):
         self.filePath.set(filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image"))
-
-
-myCreator = ThumbnailCreator()
-myCreator.root.mainloop()
