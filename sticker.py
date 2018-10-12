@@ -7,9 +7,6 @@ class Align(Enum):
     NW  N   NE
     W   C   E
     SW  S   SE
-
-    boolean operations are supported:
-    #TODO
     """
     NORTH = 0b1
     EAST = 0b10
@@ -21,19 +18,15 @@ class Align(Enum):
     S = SOUTH
     W = WEST
     C = CENTER
-    NE = N + E
-    SE = S + E
-    NW = N + W
-    SW = S + W
+    NE = 0b11
+    SE = 0b110
+    NW = 0b1001
+    SW = 0b1100
 
-    def __add__(self, other):
-
-
-# TODO
 class Sticker:
     name = ""
     position = (-1, -1)
-
+    align = Align.CENTER
     def __init__(self):
         pass
 
