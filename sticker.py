@@ -1,4 +1,5 @@
 from enum import Enum
+from PIL import Image, ImageDraw, ImageFont
 
 
 class Align(Enum):
@@ -23,14 +24,23 @@ class Align(Enum):
     NW = 0b1001
     SW = 0b1100
 
+
 class Sticker:
     name = ""
     position = (-1, -1)
     align = Align.CENTER
+
     def __init__(self):
         pass
 
     def render(self):
         pass
 
-    def
+
+class TextSticker(Sticker):
+    text = ""
+    font = None
+    size = 0
+
+    def __init__(self):
+        super().__init__()
