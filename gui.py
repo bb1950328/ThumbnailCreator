@@ -2,29 +2,45 @@ import os
 from tkinter import *
 from tkinter import filedialog, ttk
 
+from PIL import Image as PILImage
+from PIL import ImageTk
+
 
 class ThumbnailCreatorGUI:
     def __init__(self):
         self.root = Tk()
         self.root.title("ThumbnailCreator")
         self.preview = ThumbnailCreatorPreview(self.root)
-        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N+E+S+W)
+        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
         self.background = ThumbnailCreatorBackground(self.root)
-        self.background.root.grid(row=0, column=1, sticky=E+W)
+        self.background.root.grid(row=0, column=1, sticky=E + W)
         self.stickers = ThumbnailCreatorStickers(self.root)
         self.stickers.root.grid(row=1, column=1)
 
 
 class ThumbnailCreatorPreview:
     def __init__(self, parent):
+        self.width = 500
+        self.image_id = None
         self.root = LabelFrame(parent)
         self.label = Label(self.root)
         self.label["text"] = "Preview"
         self.root["labelwidget"] = self.label
-        # self.root.pack()
-        self.canvas = Canvas(self.root)
+        self.canvas = Canvas(self.root, bg="white")
         self.canvas.pack()
 
+    def set_pil_image(self, image):
+        if self.image_id is not None:
+            self.canvas.delete(self.image_id)
+        wpercent = (self.width / float(image.size[0]))
+        hsize = int((float(image.size[1]) * float(wpercent)))
+        image = image.resize((self.width, hsize), PILImage.ANTIALIAS)
+        photo = ImageTk.PhotoImage(image)
+        self.image_id = self.canvas.create_image(0, 0, image=photo)
+
+    def set_file_image(self, filename):
+        pilImage = PILImage.open(filename)
+        self.set_pil_image(pilImage)
 
 class ThumbnailCreatorBackground:
     def __init__(self, parent):
