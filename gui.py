@@ -1,6 +1,6 @@
 import os
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog, ttk
 
 
 class ThumbnailCreatorGUI:
@@ -8,9 +8,11 @@ class ThumbnailCreatorGUI:
         self.root = Tk()
         self.root.title("ThumbnailCreator")
         self.preview = ThumbnailCreatorPreview(self.root)
-        self.preview.root.grid(row=0, column=0)
+        self.preview.root.grid(row=0, column=0, rowspan=2)
         self.background = ThumbnailCreatorBackground(self.root)
         self.background.root.grid(row=0, column=1)
+        self.stickers = ThumbnailCreatorStickers(self.root)
+        self.stickers.root.grid(row=1, column=1)
 
 
 class ThumbnailCreatorPreview:
@@ -81,3 +83,30 @@ class ThumbnailCreatorBackground:
 
     def choose_file(self):
         self.filePath.set(filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image"))
+
+
+class ThumbnailCreatorStickers:
+    def __init__(self, parent):
+        self.root = LabelFrame(parent)
+        self.root_label = Label(self.root)
+        self.root_label["text"] = "Stickers"
+        self.root["labelwidget"] = self.root_label
+
+        self.tree = ttk.Treeview(self.root)
+        self.add_button = Button(self.root)
+        self.add_button["text"] = "Add..."
+        self.delete_button = Button(self.root)
+        self.delete_button["text"] = "Delete"
+        self.modify_button = Button(self.root)
+        self.modify_button["text"] = "Modify..."
+        self.up_button = Button(self.root)
+        self.up_button["text"] = "Up"
+        self.down_button = Button(self.root)
+        self.down_button["text"] = "Down"
+
+        self.tree.grid(column=0, row=0, columnspan=5)
+        self.add_button.grid(column=0, row=1)
+        self.delete_button.grid(column=1, row=1)
+        self.modify_button.grid(column=2, row=1)
+        self.up_button.grid(column=3, row=1)
+        self.down_button.grid(column=4, row=1)
