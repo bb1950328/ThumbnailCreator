@@ -20,5 +20,6 @@ class ThumbnailCreatorControl:
     def refresh_preview(self):
         self.gui.preview.set_pil_image(self.model.render())
 
+
 control = ThumbnailCreatorControl()
 control.run()
