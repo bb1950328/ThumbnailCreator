@@ -39,8 +39,9 @@ class ThumbnailCreatorPreview:
         self.image_id = self.canvas.create_image(0, 0, image=photo)
 
     def set_file_image(self, filename):
-        pilImage = PILImage.open(filename)
-        self.set_pil_image(pilImage)
+        pil_image = PILImage.open(filename)
+        self.set_pil_image(pil_image)
+
 
 class ThumbnailCreatorBackground:
     def __init__(self, parent):
@@ -98,7 +99,9 @@ class ThumbnailCreatorBackground:
         self.fast_crop_button.grid(column=2, row=1, rowspan=4)
 
     def choose_file(self):
-        self.filePath.set(filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image"))
+        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image")
+        self.filePathEntry.delete(0, END)
+        self.filePathEntry.insert(0, filename)
 
 
 class ThumbnailCreatorStickers:

@@ -6,7 +6,7 @@ from PIL import Image
 
 class ThumbnailCreatorModel:
     _image_path = ""  # type: str
-    _image_crop = (0, 0, -1, -1)
+    _image_crop = None
 
     def __init__(self):
         pass
@@ -78,7 +78,9 @@ class ThumbnailCreatorModel:
         self._image_crop = (x1, y1, x2, y2)
 
     def render(self, resize=None):
+        a = 0
         result = Image.new("RGBA", self.get_cropped_image_size())
+        result.paste(self.image, (0, 0))
         return result
 
     def render_and_save(self, resize=None, path=None):
