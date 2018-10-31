@@ -51,5 +51,33 @@ class ThumbnailCreatorBackground:
         self.cropFrame["labelwidget"] = self.cropLabel
         self.cropFrame.grid(row=1, column=0)
 
+        self.crop_x1_label = Label(self.cropFrame)
+        self.crop_x1_label["text"] = "Left"
+        self.crop_x1_spinbox = Spinbox(self.cropFrame)
+        self.crop_x1_label.grid(column=0, row=0)
+        self.crop_x1_spinbox.grid(column=1, row=0)
+
+        self.crop_x2_label = Label(self.cropFrame)
+        self.crop_x2_label["text"] = "Right"
+        self.crop_x2_spinbox = Spinbox(self.cropFrame)
+        self.crop_x2_label.grid(column=0, row=1)
+        self.crop_x2_spinbox.grid(column=1, row=1)
+
+        self.crop_y1_label = Label(self.cropFrame)
+        self.crop_y1_label["text"] = "Top"
+        self.crop_y1_spinbox = Spinbox(self.cropFrame)
+        self.crop_y1_label.grid(column=0, row=2)
+        self.crop_y1_spinbox.grid(column=1, row=2)
+
+        self.crop_y2_label = Label(self.cropFrame)
+        self.crop_y2_label["text"] = "Bottom"
+        self.crop_y2_spinbox = Spinbox(self.cropFrame)
+        self.crop_y2_label.grid(column=0, row=3)
+        self.crop_y2_spinbox.grid(column=1, row=3)
+
+        self.fast_crop_button = Button(self.cropFrame)
+        self.fast_crop_button["text"] = "Fast\nCrop"
+        self.fast_crop_button.grid(column=2, row=1, rowspan=4)
+
     def choose_file(self):
         self.filePath.set(filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image"))

@@ -12,8 +12,7 @@ class ThumbnailCreatorControl:
         self.gui.root.mainloop()
 
     def image_changed(self, *args, **kwargs):
-        print(args)
-        print(kwargs)
+        self.model.set_image_path(self.gui.background.filePath.get())
 
 
 control = ThumbnailCreatorControl()
