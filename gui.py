@@ -8,9 +8,9 @@ class ThumbnailCreatorGUI:
         self.root = Tk()
         self.root.title("ThumbnailCreator")
         self.preview = ThumbnailCreatorPreview(self.root)
-        self.preview.root.grid(row=0, column=0, rowspan=2)
+        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N+E+S+W)
         self.background = ThumbnailCreatorBackground(self.root)
-        self.background.root.grid(row=0, column=1)
+        self.background.root.grid(row=0, column=1, sticky=E+W)
         self.stickers = ThumbnailCreatorStickers(self.root)
         self.stickers.root.grid(row=1, column=1)
 
