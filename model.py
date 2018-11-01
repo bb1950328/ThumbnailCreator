@@ -22,7 +22,7 @@ class ThumbnailCreatorModel:
         self._image_path = new_path
         try:
             print(self._image_path)
-            self.image = PIL.Image.open(self._image_path)
+            self.image = PIL.Image.open(open(self._image_path, "rb"))
         except IOError:
             return False
         return True

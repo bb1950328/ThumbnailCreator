@@ -37,6 +37,7 @@ class ThumbnailCreatorPreview:
         image = image.resize((self.width, hsize), PILImage.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         self.image_id = self.canvas.create_image(0, 0, image=photo, anchor=NW)
+        self.canvas.update()
         print("updated preview", self.image_id, photo)
 
     def set_file_image(self, filename):
