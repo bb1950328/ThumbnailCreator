@@ -1,7 +1,7 @@
 import random
 import tempfile
 
-from PIL import Image
+import PIL.Image
 
 
 class ThumbnailCreatorModel:
@@ -12,16 +12,20 @@ class ThumbnailCreatorModel:
         pass
         self.image = None
 
-    def set_image_path(self, new_path):
+    def set_background_image_path(self, new_path):
         """
         :type new_path: str
-        :rtype: bool
+        :rtype: bool success
         """
+        if self._image_path == new_path and self.image is not None:
+            return True
         self._image_path = new_path
         try:
-            self.image = Image.open(self._image_path)
+            print(self._image_path)
+            self.image = PIL.Image.open(self._image_path)
         except IOError:
             return False
+        return True
 
     def get_raw_image_size(self):
         """
@@ -79,7 +83,7 @@ class ThumbnailCreatorModel:
 
     def render(self, resize=None):
         a = 0
-        result = Image.new("RGBA", self.get_cropped_image_size())
+        result = PIL.Image.new("RGBA", self.get_cropped_image_size())
         result.paste(self.image, (0, 0))
         return result
 
@@ -87,3 +91,4 @@ class ThumbnailCreatorModel:
         result = self.render(resize)
         if path is None:
             path = tempfile.gettempdir() + "tmp" + hex(random.randint(0x10000, 0xFFFFF))[2:] + ".png"
+            result.save(path)

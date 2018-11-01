@@ -1,5 +1,4 @@
 from enum import Enum
-from PIL import Image, ImageDraw, ImageFont
 
 
 class Align(Enum):
@@ -62,6 +61,7 @@ class Sticker:
         if not (self.align.value & Align.WEST):
             tl_pos[0] -= self.size[0] / 2
         return tl_pos
+
 
 class TextSticker(Sticker):
     text = None
