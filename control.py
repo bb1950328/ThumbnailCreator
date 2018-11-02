@@ -67,8 +67,8 @@ class ThumbnailCreatorControl:
         print("crop image", args)
         self.model.crop_image(self.gui.background.crop_x1_value.get(),
                               self.gui.background.crop_y1_value.get(),
-                              self.gui.background.crop_x2_value.get(),
-                              self.gui.background.crop_y2_value.get())
+                              -self.gui.background.crop_x2_value.get(),
+                              -self.gui.background.crop_y2_value.get())
         self.refresh_preview()
 
 

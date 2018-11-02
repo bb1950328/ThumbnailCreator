@@ -56,6 +56,9 @@ class ThumbnailCreatorModel:
         :raise ValueError
         :return None
         """
+        if self.image is None:
+            return
+        print("crop_image", x1, y1, x2, y2)
         width, height = self.get_raw_image_size()
         # if x1 <= 0:
         #     x1 += width
