@@ -8,6 +8,7 @@ class ThumbnailCreatorControl:
         self.model = model.ThumbnailCreatorModel()
         self.gui.background.filePath.trace("w", self.image_changed)
         self.gui.background.filePathEntry.bind("<Return>", self.image_changed)
+        # self.gui.background.path_ok_button["command"] = self.image_changed
 
     def run(self):
         self.gui.root.mainloop()

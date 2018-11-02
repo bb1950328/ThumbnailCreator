@@ -11,11 +11,14 @@ class ThumbnailCreatorGUI:
         self.root = Tk()
         self.root.title("ThumbnailCreator")
         self.preview = ThumbnailCreatorPreview(self.root)
-        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
         self.background = ThumbnailCreatorBackground(self.root)
-        self.background.root.grid(row=0, column=1, sticky=E + W)
         self.stickers = ThumbnailCreatorStickers(self.root)
+        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
+        self.background.root.grid(row=0, column=1, sticky=E + W)
         self.stickers.root.grid(row=1, column=1)
+        # self.preview.root.pack(side=LEFT, expand=True)
+        # self.background.root.pack(side=TOP)
+        # self.stickers.root.pack(expand=True)
 
 
 class ThumbnailCreatorPreview:
@@ -29,14 +32,20 @@ class ThumbnailCreatorPreview:
         self.canvas = Canvas(self.root, bg="white")
         self.canvas.pack()
 
-    def set_pil_image(self, image):
+    def clear(self):
         if self.image_id is not None:
             self.canvas.delete(self.image_id)
+            self.canvas.update()
+            print("cleared preview")
+
+    def set_pil_image(self, image):
         wpercent = (self.width / float(image.size[0]))
         hsize = int((float(image.size[1]) * float(wpercent)))
         image = image.resize((self.width, hsize), PILImage.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
-        self.image_id = self.canvas.create_image(0, 0, image=photo, anchor=NW)
+        self.root.photo = photo
+        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)
+        # self.image_id = self.canvas.create_rectangle(x1=5, x2=10, y1=5, y2=10, fill="red")
         self.canvas.update()
         print("updated preview", self.image_id, photo)
 
@@ -65,6 +74,8 @@ class ThumbnailCreatorBackground:
         self.filePathBrowseButton["text"] = "Browse..."
         self.filePathBrowseButton["command"] = self.choose_file
         self.filePathBrowseButton.grid(row=0, column=1)
+        # self.path_ok_button = Button(self.filePathFrame, text="OK")
+        # self.path_ok_button.grid(row=0, column=2)
 
         self.cropFrame = LabelFrame(self.root)
         self.cropLabel = Label(self.root)
