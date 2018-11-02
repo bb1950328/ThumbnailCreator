@@ -165,3 +165,34 @@ class ThumbnailCreatorStickers:
         self.modify_button.grid(column=2, row=1)
         self.up_button.grid(column=3, row=1)
         self.down_button.grid(column=4, row=1)
+
+
+class FastCropDialog:
+    def run(self, image, callback_func, existing_crop=None):
+        self.root = Tk()
+        self.root.wm_title("Fast Crop Backgrounnd Image")
+        self.canvas = Canvas(self.root)
+        self.ok_button = Button(self.root, text="OK")
+        self.cancel_button = Button(self.root, text="Cancel")
+        self.canvas.pack(side=TOP)
+        self.ok_button.pack(side=RIGHT)
+        self.cancel_button.pack(side=RIGHT)
+        self.callback_func = callback_func
+        self.ok_button["command"] = self.ok_event
+        self.cancel_button["command"] = self.cancel_event
+        if existing_crop is not None:
+            self.actual_crop = existing_crop
+        else:
+            self.actual_crop = (0, 0, *image.size)
+        self.image = image
+        self.root.mainloop()
+        return self.actual_crop
+
+    def ok_event(self):
+        self.root.destroy()
+        self.root.quit()
+
+    def cancel_event(self):
+        self.actual_crop = None
+        self.root.destroy()
+        self.root.quit()

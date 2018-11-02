@@ -15,6 +15,7 @@ class ThumbnailCreatorControl:
         self.gui.background.crop_x2_value.trace("w", self.crop_event)
         self.gui.background.crop_y1_value.trace("w", self.crop_event)
         self.gui.background.crop_y2_value.trace("w", self.crop_event)
+        self.gui.background.fast_crop_button["command"] = self.fast_crop
 
     def run(self):
         self.gui.root.mainloop()
@@ -71,6 +72,13 @@ class ThumbnailCreatorControl:
                               -self.gui.background.crop_y2_value.get())
         self.refresh_preview()
 
+    def fast_crop(self):
+        if self.model.image is None:
+            return
+        fastcropper = gui.FastCropDialog()
+        result = fastcropper.run(self.model.image, None)
+        if result is not None:
+            self.model.crop_image(*result)
 
 control = ThumbnailCreatorControl()
 control.run()
