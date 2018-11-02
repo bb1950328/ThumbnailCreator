@@ -8,7 +8,6 @@ class ThumbnailCreatorControl:
         self.model = model.ThumbnailCreatorModel()
         self.gui.background.filePath.trace("w", self.image_changed)
         self.gui.background.filePathEntry.bind("<Return>", self.image_changed)
-        # self.gui.background.path_ok_button["command"] = self.image_changed
         self.gui.root.bind("<Control-MouseWheel>", self.zoom_preview)
         self.gui.root.bind("<Control-Button-4>", self.zoom_preview_up)
         self.gui.root.bind("<Control-Button-5>", self.zoom_preview_down)
@@ -48,6 +47,7 @@ class ThumbnailCreatorControl:
 
         fake_event = FakeEvent()
         fake_event.delta = 1
+        # noinspection PyTypeChecker
         self.zoom_preview(fake_event)
 
     def zoom_preview_down(self, event):

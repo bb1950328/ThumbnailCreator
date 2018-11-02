@@ -16,9 +16,6 @@ class ThumbnailCreatorGUI:
         self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
         self.background.root.grid(row=0, column=1, sticky=E + W)
         self.stickers.root.grid(row=1, column=1, sticky=W + E)
-        # self.preview.root.pack(side=LEFT, expand=True)
-        # self.background.root.pack(side=TOP)
-        # self.stickers.root.pack(expand=True)
 
 
 class ThumbnailCreatorPreview:
@@ -89,8 +86,6 @@ class ThumbnailCreatorBackground:
         self.filePathBrowseButton["text"] = "Browse..."
         self.filePathBrowseButton["command"] = self.choose_file
         self.filePathBrowseButton.grid(row=0, column=1)
-        # self.path_ok_button = Button(self.filePathFrame, text="OK")
-        # self.path_ok_button.grid(row=0, column=2)
 
         self.cropFrame = LabelFrame(self.root)
         self.cropLabel = Label(self.root)
@@ -100,25 +95,33 @@ class ThumbnailCreatorBackground:
 
         self.crop_x1_label = Label(self.cropFrame)
         self.crop_x1_label["text"] = "Left"
-        self.crop_x1_spinbox = Spinbox(self.cropFrame)
+        self.crop_x1_value = IntVar()
+        self.crop_x1_value.set(0)
+        self.crop_x1_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_x1_value, from_=0, to_=10000)
         self.crop_x1_label.grid(column=0, row=0)
         self.crop_x1_spinbox.grid(column=1, row=0)
 
         self.crop_x2_label = Label(self.cropFrame)
         self.crop_x2_label["text"] = "Right"
-        self.crop_x2_spinbox = Spinbox(self.cropFrame)
+        self.crop_x2_value = IntVar()
+        self.crop_x2_value.set(0)
+        self.crop_x2_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_x2_value, from_=0, to_=10000)
         self.crop_x2_label.grid(column=0, row=1)
         self.crop_x2_spinbox.grid(column=1, row=1)
 
         self.crop_y1_label = Label(self.cropFrame)
         self.crop_y1_label["text"] = "Top"
-        self.crop_y1_spinbox = Spinbox(self.cropFrame)
+        self.crop_y1_value = IntVar()
+        self.crop_y1_value.set(0)
+        self.crop_y1_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_y1_value, from_=0, to_=10000)
         self.crop_y1_label.grid(column=0, row=2)
         self.crop_y1_spinbox.grid(column=1, row=2)
 
         self.crop_y2_label = Label(self.cropFrame)
         self.crop_y2_label["text"] = "Bottom"
-        self.crop_y2_spinbox = Spinbox(self.cropFrame)
+        self.crop_y2_value = IntVar()
+        self.crop_y2_value.set(0)
+        self.crop_y2_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_y2_value, from_=0, to_=10000)
         self.crop_y2_label.grid(column=0, row=3)
         self.crop_y2_spinbox.grid(column=1, row=3)
 

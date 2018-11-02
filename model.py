@@ -49,10 +49,10 @@ class ThumbnailCreatorModel:
 
     def crop_image(self, x1, y1, x2, y2):
         """
-        :param x1: int
-        :param y1: int
-        :param x2: int
-        :param y2: int
+        :param x1: int from west
+        :param y1: int when >0 from west, else from east
+        :param x2: int from north
+        :param y2: int when >0 from north, else from south
         :raise ValueError
         :return None
         """
