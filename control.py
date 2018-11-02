@@ -11,6 +11,10 @@ class ThumbnailCreatorControl:
         self.gui.root.bind("<Control-MouseWheel>", self.zoom_preview)
         self.gui.root.bind("<Control-Button-4>", self.zoom_preview_up)
         self.gui.root.bind("<Control-Button-5>", self.zoom_preview_down)
+        self.gui.background.crop_x1_value.trace("w", self.crop_event)
+        self.gui.background.crop_x2_value.trace("w", self.crop_event)
+        self.gui.background.crop_y1_value.trace("w", self.crop_event)
+        self.gui.background.crop_y2_value.trace("w", self.crop_event)
 
     def run(self):
         self.gui.root.mainloop()
@@ -56,7 +60,16 @@ class ThumbnailCreatorControl:
 
         fake_event = FakeEvent()
         fake_event.delta = -1
+        # noinspection PyTypeChecker
         self.zoom_preview(fake_event)
+
+    def crop_event(self, *args):
+        print("crop image", args)
+        self.model.crop_image(self.gui.background.crop_x1_value.get(),
+                              self.gui.background.crop_y1_value.get(),
+                              self.gui.background.crop_x2_value.get(),
+                              self.gui.background.crop_y2_value.get())
+        self.refresh_preview()
 
 
 control = ThumbnailCreatorControl()

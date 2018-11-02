@@ -38,11 +38,11 @@ class ThumbnailCreatorPreview:
 
     def set_pil_image(self, image):
         wpercent = (self.width / float(image.size[0]))
-        hsize = int((float(image.size[1]) * float(wpercent)))
-        image = image.resize((self.width, hsize), PILImage.ANTIALIAS)
+        self.height = int(float(image.size[1]) * wpercent)
+        print(self.width, self.height, image.size)
+        image = image.resize((self.width, self.height), PILImage.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         self.root.photo = photo
-        self.height = hsize
         self.canvas["height"] = self.height
         self.canvas["width"] = self.width
         self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)

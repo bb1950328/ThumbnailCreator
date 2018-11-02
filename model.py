@@ -6,7 +6,7 @@ import PIL.Image
 
 class ThumbnailCreatorModel:
     _image_path = ""  # type: str
-    _image_crop = None
+    _image_crop = None  # (x1, y1, x2, y2)
 
     def __init__(self):
         pass
@@ -57,13 +57,13 @@ class ThumbnailCreatorModel:
         :return None
         """
         width, height = self.get_raw_image_size()
-        if x1 < 0:
-            x1 += width
-        if x2 < 0:
+        # if x1 <= 0:
+        #     x1 += width
+        if x2 <= 0:
             x2 += width
-        if y1 < 0:
-            y1 += height
-        if y2 < 0:
+        # if y1 <= 0:
+        #     y1 += height
+        if y2 <= 0:
             y2 += height
 
         if x1 > width:
@@ -78,8 +78,8 @@ class ThumbnailCreatorModel:
             raise ValueError("y2 too big!")
         if y1 > y2:
             raise ValueError("y1 > y2")
-
         self._image_crop = (x1, y1, x2, y2)
+        print("cropped to", self._image_crop)
 
     def render(self, resize=None):
         """
@@ -89,7 +89,8 @@ class ThumbnailCreatorModel:
         """
         a = 0
         result = PIL.Image.new("RGBA", self.get_cropped_image_size())
-        result.paste(self.image, (0, 0))
+        cropped = self.image.crop(self._image_crop)
+        result.paste(cropped, (0, 0))
         if resize is not None:
             result = result.resize(resize)
         return result
