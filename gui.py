@@ -168,7 +168,7 @@ class ThumbnailCreatorStickers:
 
 
 class FastCropDialog:
-    def run(self, image, callback_func, existing_crop=None):
+    def run(self, image, existing_crop=None):
         self.root = Tk()
         self.root.wm_title("Fast Crop Backgrounnd Image")
         self.canvas = Canvas(self.root)
@@ -177,9 +177,9 @@ class FastCropDialog:
         self.canvas.pack(side=TOP)
         self.ok_button.pack(side=RIGHT)
         self.cancel_button.pack(side=RIGHT)
-        self.callback_func = callback_func
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
+        self.canvas.bind("<Motion>", self.mouse_moved_event)
         if existing_crop is not None:
             self.actual_crop = existing_crop
         else:
@@ -196,3 +196,31 @@ class FastCropDialog:
         self.actual_crop = None
         self.root.destroy()
         self.root.quit()
+
+    def mouse_moved_event(self, event):
+        on_x1 = abs(event.x - self.actual_crop[0]) < 5
+        on_y1 = abs(event.y - self.actual_crop[1]) < 5
+        on_x2 = abs(event.x - self.actual_crop[2]) < 5
+        on_y2 = abs(event.y - self.actual_crop[3]) < 5
+        if not any((on_x1, on_y1, on_x2, on_y2)):
+            self.canvas.config(cursor="")
+            print("not on line", (event.x, event.y))
+        else:
+            print("mouse on line", (on_x1, on_y1, on_x2, on_y2), (event.x, event.y))
+        if on_x1 and not on_y1 and not on_y2:  # left line
+            self.canvas.config(cursor="left_side")
+        elif on_x2 and not on_y1 and not on_y2:  # right line
+            self.canvas.config(cursor="right_side")
+        elif on_y1 and not on_x1 and not on_x2:  # top line
+            self.canvas.config(cursor="top_side")
+        elif on_y2 and not on_x1 and not on_x2:  # bottom line
+            self.canvas.config(cursor="bottom_side")
+
+        elif on_x1 and on_y1:  # top left corner
+            self.canvas.config(cursor="top_left_corner")
+        elif on_x1 and on_y2:  # bottom left corner
+            self.canvas.config(cursor="bottom_left_corner")
+        elif on_x2 and on_y1:  # top right corner
+            self.canvas.config(cursor="top_right_corner")
+        elif on_x2 and on_y2:  # bottom right corner
+            self.canvas.config(cursor="bottom_right_corner")

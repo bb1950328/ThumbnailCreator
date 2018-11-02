@@ -6,6 +6,9 @@ class ThumbnailCreatorControl:
     def __init__(self):
         self.gui = gui.ThumbnailCreatorGUI()
         self.model = model.ThumbnailCreatorModel()
+        self.make_bindings()
+
+    def make_bindings(self):
         self.gui.background.filePath.trace("w", self.image_changed)
         self.gui.background.filePathEntry.bind("<Return>", self.image_changed)
         self.gui.root.bind("<Control-MouseWheel>", self.zoom_preview)
@@ -76,9 +79,10 @@ class ThumbnailCreatorControl:
         if self.model.image is None:
             return
         fastcropper = gui.FastCropDialog()
-        result = fastcropper.run(self.model.image, None)
+        result = fastcropper.run(self.model.image, self.model.image_crop)
         if result is not None:
             self.model.crop_image(*result)
+
 
 control = ThumbnailCreatorControl()
 control.run()
