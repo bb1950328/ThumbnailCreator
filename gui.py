@@ -180,6 +180,7 @@ class FastCropDialog:
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
         self.canvas.bind("<Motion>", self.mouse_moved_event)
+        self.dragtype = None
         if existing_crop is not None:
             self.actual_crop = existing_crop
         else:
@@ -197,8 +198,37 @@ class FastCropDialog:
         self.root.destroy()
         self.root.quit()
 
-    def mouse_moved_event(self, event):
+    def mouse_on_spot(self, event):
         on_x1 = abs(event.x - self.actual_crop[0]) < 5
+        on_y1 = abs(event.y - self.actual_crop[1]) < 5
+        on_x2 = abs(event.x - self.actual_crop[2]) < 5
+        on_y2 = abs(event.y - self.actual_crop[3]) < 5
+        if not any((on_x1, on_y1, on_x2, on_y2)):
+            return None
+            print("not on line", (event.x, event.y))
+        else:
+            print("mouse on line", (on_x1, on_y1, on_x2, on_y2), (event.x, event.y))
+        if on_x1 and not on_y1 and not on_y2:  # left line
+            return 1
+        elif on_x2 and not on_y1 and not on_y2:  # right line
+            return 2
+        elif on_y1 and not on_x1 and not on_x2:  # top line
+            return 3
+        elif on_y2 and not on_x1 and not on_x2:  # bottom line
+            return 4
+
+        elif on_x1 and on_y1:  # top left corner
+            return 5
+        elif on_x1 and on_y2:  # bottom left corner
+            return 6
+        elif on_x2 and on_y1:  # top right corner
+            return 7
+        elif on_x2 and on_y2:  # bottom right corner
+            return 8
+        return None
+
+    def mouse_moved_event(self, event):
+        """on_x1 = abs(event.x - self.actual_crop[0]) < 5
         on_y1 = abs(event.y - self.actual_crop[1]) < 5
         on_x2 = abs(event.x - self.actual_crop[2]) < 5
         on_y2 = abs(event.y - self.actual_crop[3]) < 5
@@ -223,4 +253,22 @@ class FastCropDialog:
         elif on_x2 and on_y1:  # top right corner
             self.canvas.config(cursor="top_right_corner")
         elif on_x2 and on_y2:  # bottom right corner
-            self.canvas.config(cursor="bottom_right_corner")
+            self.canvas.config(cursor="bottom_right_corner")"""
+        spot = self.mouse_on_spot(event)
+        if spot is None:
+            self.canvas.config(cursor="")
+            print("not on line", (event.x, event.y))
+        elif spot == 1:
+            self.canvas.config(cursor="left_side")
+        elif spot == 2:
+            self.canvas.config(cursor="right_side")
+        # TODO
+
+    def mouse_pressed_event(self, event):
+        pass
+
+    def mouse_dragged_event(self, event):
+        pass
+
+    def mouse_released_event(self, event):
+        pass
