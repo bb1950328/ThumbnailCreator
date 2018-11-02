@@ -169,23 +169,34 @@ class ThumbnailCreatorStickers:
 
 class FastCropDialog:
     def run(self, image, existing_crop=None):
-        self.root = Tk()
+        self.width = 1000
+        self.root = Toplevel()
         self.root.wm_title("Fast Crop Backgrounnd Image")
-        self.canvas = Canvas(self.root)
+        self.image = image
+        w, h = self.image.size
+        self.scale = self.width / w
+        self.canvas = Canvas(self.root, width=w * self.scale, height=h * self.scale)
         self.ok_button = Button(self.root, text="OK")
         self.cancel_button = Button(self.root, text="Cancel")
         self.canvas.pack(side=TOP)
         self.ok_button.pack(side=RIGHT)
         self.cancel_button.pack(side=RIGHT)
+
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
         self.canvas.bind("<Motion>", self.mouse_moved_event)
+
         self.dragtype = None
         if existing_crop is not None:
             self.actual_crop = existing_crop
         else:
             self.actual_crop = (0, 0, *image.size)
-        self.image = image
+        self.photoimage = ImageTk.PhotoImage(self.image)
+        print(w, h, self.photoimage.width(), self.photoimage.height(), self.canvas.size())
+        self.image_id = self.canvas.create_image((0, 0), image=self.photoimage, anchor=NW)
+        self.rect_id1 = self.canvas.create_rectangle(*self.actual_crop, outline="black", dash=(8, 8))
+        self.rect_id2 = self.canvas.create_rectangle(*self.actual_crop, outline="white", dash=(8, 8), dashoff=8)
+        self.canvas.update()
         self.root.mainloop()
         return self.actual_crop
 
@@ -199,13 +210,23 @@ class FastCropDialog:
         self.root.quit()
 
     def mouse_on_spot(self, event):
+        """
+        :param event: event objext with x and y
+        :return: int
+           |     |
+        ---5--3--7--
+           |     |
+           1     2
+           |     |
+        ---6--4--8--
+           |     |
+        """
         on_x1 = abs(event.x - self.actual_crop[0]) < 5
         on_y1 = abs(event.y - self.actual_crop[1]) < 5
         on_x2 = abs(event.x - self.actual_crop[2]) < 5
         on_y2 = abs(event.y - self.actual_crop[3]) < 5
         if not any((on_x1, on_y1, on_x2, on_y2)):
             return None
-            print("not on line", (event.x, event.y))
         else:
             print("mouse on line", (on_x1, on_y1, on_x2, on_y2), (event.x, event.y))
         if on_x1 and not on_y1 and not on_y2:  # left line
@@ -228,32 +249,6 @@ class FastCropDialog:
         return None
 
     def mouse_moved_event(self, event):
-        """on_x1 = abs(event.x - self.actual_crop[0]) < 5
-        on_y1 = abs(event.y - self.actual_crop[1]) < 5
-        on_x2 = abs(event.x - self.actual_crop[2]) < 5
-        on_y2 = abs(event.y - self.actual_crop[3]) < 5
-        if not any((on_x1, on_y1, on_x2, on_y2)):
-            self.canvas.config(cursor="")
-            print("not on line", (event.x, event.y))
-        else:
-            print("mouse on line", (on_x1, on_y1, on_x2, on_y2), (event.x, event.y))
-        if on_x1 and not on_y1 and not on_y2:  # left line
-            self.canvas.config(cursor="left_side")
-        elif on_x2 and not on_y1 and not on_y2:  # right line
-            self.canvas.config(cursor="right_side")
-        elif on_y1 and not on_x1 and not on_x2:  # top line
-            self.canvas.config(cursor="top_side")
-        elif on_y2 and not on_x1 and not on_x2:  # bottom line
-            self.canvas.config(cursor="bottom_side")
-
-        elif on_x1 and on_y1:  # top left corner
-            self.canvas.config(cursor="top_left_corner")
-        elif on_x1 and on_y2:  # bottom left corner
-            self.canvas.config(cursor="bottom_left_corner")
-        elif on_x2 and on_y1:  # top right corner
-            self.canvas.config(cursor="top_right_corner")
-        elif on_x2 and on_y2:  # bottom right corner
-            self.canvas.config(cursor="bottom_right_corner")"""
         spot = self.mouse_on_spot(event)
         if spot is None:
             self.canvas.config(cursor="")
@@ -262,13 +257,34 @@ class FastCropDialog:
             self.canvas.config(cursor="left_side")
         elif spot == 2:
             self.canvas.config(cursor="right_side")
-        # TODO
+        elif spot == 3:
+            self.canvas.config(cursor="top_side")
+        elif spot == 4:
+            self.canvas.config(cursor="bottom_side")
+        elif spot == 5:
+            self.canvas.config(cursor="top_left_corner")
+        elif spot == 6:
+            self.canvas.config(cursor="bottom_left_corner")
+        elif spot == 7:
+            self.canvas.config(cursor="top_right_corner")
+        elif spot == 8:
+            self.canvas.config(cursor="bottom_right_corner")
 
     def mouse_pressed_event(self, event):
-        pass
+        on_spot = self.mouse_on_spot(event)
+        if on_spot is None:
+            self.dragtype = -1
+        else:
+            self.dragtype = on_spot
 
     def mouse_dragged_event(self, event):
         pass
 
     def mouse_released_event(self, event):
         pass
+
+    def canvas_xy_to_image_xy(self, cx, cy):
+        return cx / self.scale, cy / self.scale
+
+    def image_xy_to_canvas_xy(self, ix, iy):
+        return ix * self.scale, iy * self.scale
