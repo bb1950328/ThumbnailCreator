@@ -15,7 +15,7 @@ class ThumbnailCreatorGUI:
         self.stickers = ThumbnailCreatorStickers(self.root)
         self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
         self.background.root.grid(row=0, column=1, sticky=E + W)
-        self.stickers.root.grid(row=1, column=1)
+        self.stickers.root.grid(row=1, column=1, sticky=W + E)
         # self.preview.root.pack(side=LEFT, expand=True)
         # self.background.root.pack(side=TOP)
         # self.stickers.root.pack(expand=True)
@@ -24,6 +24,7 @@ class ThumbnailCreatorGUI:
 class ThumbnailCreatorPreview:
     def __init__(self, parent):
         self.width = 500
+        self.height = None
         self.image_id = None
         self.root = LabelFrame(parent)
         self.label = Label(self.root)
@@ -44,10 +45,24 @@ class ThumbnailCreatorPreview:
         image = image.resize((self.width, hsize), PILImage.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         self.root.photo = photo
+        self.height = hsize
+        self.canvas["height"] = self.height
+        self.canvas["width"] = self.width
         self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)
         # self.image_id = self.canvas.create_rectangle(x1=5, x2=10, y1=5, y2=10, fill="red")
         self.canvas.update()
         print("updated preview", self.image_id, photo)
+
+    def set_pil_image_without_resize(self, image):
+        photo = ImageTk.PhotoImage(image)
+        self.root.photo = photo
+        self.width, self.height = image.size
+        self.canvas["height"] = self.height
+        self.canvas["width"] = self.width
+        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)
+        # self.image_id = self.canvas.create_rectangle(x1=5, x2=10, y1=5, y2=10, fill="red")
+        self.canvas.update()
+        print("updated preview raw", self.image_id, photo)
 
     def set_file_image(self, filename):
         pil_image = PILImage.open(filename)
@@ -127,16 +142,21 @@ class ThumbnailCreatorStickers:
         self.tree = ttk.Treeview(self.root)
         self.add_button = Button(self.root)
         self.add_button["text"] = "Add..."
+        self.add_button["padx"] = 5
         self.delete_button = Button(self.root)
         self.delete_button["text"] = "Delete"
+        self.delete_button["padx"] = 5
         self.modify_button = Button(self.root)
         self.modify_button["text"] = "Modify..."
+        self.modify_button["padx"] = 5
         self.up_button = Button(self.root)
         self.up_button["text"] = "Up"
+        self.up_button["padx"] = 5
         self.down_button = Button(self.root)
         self.down_button["text"] = "Down"
+        self.down_button["padx"] = 5
 
-        self.tree.grid(column=0, row=0, columnspan=5)
+        self.tree.grid(column=0, row=0, columnspan=5, sticky=N + E + S + W)
         self.add_button.grid(column=0, row=1)
         self.delete_button.grid(column=1, row=1)
         self.modify_button.grid(column=2, row=1)

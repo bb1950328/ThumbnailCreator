@@ -82,9 +82,16 @@ class ThumbnailCreatorModel:
         self._image_crop = (x1, y1, x2, y2)
 
     def render(self, resize=None):
+        """
+
+        :param resize: (width, height)
+        :return: PIL.Image
+        """
         a = 0
         result = PIL.Image.new("RGBA", self.get_cropped_image_size())
         result.paste(self.image, (0, 0))
+        if resize is not None:
+            result = result.resize(resize)
         return result
 
     def render_and_save(self, resize=None, path=None):

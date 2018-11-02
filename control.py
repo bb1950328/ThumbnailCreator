@@ -9,6 +9,9 @@ class ThumbnailCreatorControl:
         self.gui.background.filePath.trace("w", self.image_changed)
         self.gui.background.filePathEntry.bind("<Return>", self.image_changed)
         # self.gui.background.path_ok_button["command"] = self.image_changed
+        self.gui.root.bind("<Control-MouseWheel>", self.zoom_preview)
+        self.gui.root.bind("<Control-Button-4>", self.zoom_preview_up)
+        self.gui.root.bind("<Control-Button-5>", self.zoom_preview_down)
 
     def run(self):
         self.gui.root.mainloop()
@@ -24,6 +27,36 @@ class ThumbnailCreatorControl:
 
     def refresh_preview(self):
         self.gui.preview.set_pil_image(self.model.render())
+
+    def zoom_preview(self, event):
+        old_width = int(self.gui.preview.canvas["width"])
+        old_height = int(self.gui.preview.canvas["height"])
+        if event.delta > 0:
+            new_width = old_width * 1.1
+            new_height = old_height * 1.1
+        else:
+            new_width = old_width * 0.9
+            new_height = old_height * 0.9
+
+        print("zoom", event.delta, "from", (old_width, old_height), "to", (new_width, new_height))
+        img = self.model.render(resize=(int(new_width), int(new_height)))
+        self.gui.preview.set_pil_image_without_resize(img)
+
+    def zoom_preview_up(self, event):
+        class FakeEvent:
+            pass
+
+        fake_event = FakeEvent()
+        fake_event.delta = 1
+        self.zoom_preview(fake_event)
+
+    def zoom_preview_down(self, event):
+        class FakeEvent:
+            pass
+
+        fake_event = FakeEvent()
+        fake_event.delta = -1
+        self.zoom_preview(fake_event)
 
 
 control = ThumbnailCreatorControl()
