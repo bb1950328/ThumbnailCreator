@@ -129,6 +129,12 @@ class ThumbnailCreatorBackground:
         self.fast_crop_button["text"] = "Fast\nCrop"
         self.fast_crop_button.grid(column=2, row=1, rowspan=4)
 
+    def update_crop_fields(self, x1, y1, x2, y2):
+        self.crop_x1_value.set(x1)
+        self.crop_y1_value.set(y1)
+        self.crop_x2_value.set(x2)
+        self.crop_y2_value.set(y2)
+
     def choose_file(self):
         filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image")
         self.filePathEntry.delete(0, END)
@@ -169,6 +175,7 @@ class ThumbnailCreatorStickers:
 
 class FastCropDialog:
     def run(self, image, existing_crop=None):
+        self.backup_crop = existing_crop
         self.width = 1000
         self.root = Toplevel()
         self.root.wm_title("Fast Crop Backgrounnd Image")
@@ -185,6 +192,8 @@ class FastCropDialog:
 
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
+        self.root.protocol("WM_DELETE_WINDOW", self.cancel_event)
+
         self.canvas.bind("<Motion>", self.mouse_moved_event)
         self.canvas.bind("<Button-1>", self.mouse_pressed_event)
         self.canvas.bind("<B1-Motion>", self.mouse_dragged_event)
@@ -204,7 +213,12 @@ class FastCropDialog:
         self.refresh_rect()
         self.canvas.update()
         self.root.mainloop()
-        return tuple(map(int, self.canvas_xy_to_image_xy(*self.actual_crop)))
+        if self.actual_crop is None:
+            print("user canceled cropping")
+            return self.backup_crop
+        good_crop = tuple(map(int, self.canvas_xy_to_image_xy(*self.actual_crop)))
+        print("user confirmed cropping to", good_crop)
+        return good_crop
 
     def ok_event(self):
         self.root.destroy()

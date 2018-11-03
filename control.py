@@ -82,6 +82,10 @@ class ThumbnailCreatorControl:
         result = fastcropper.run(self.model.image, self.model.image_crop)
         if result is not None:
             self.model.crop_image(*result)
+            self.gui.background.update_crop_fields(result[0], result[1],
+                                                   self.model.get_raw_image_size()[0] - result[2],
+                                                   self.model.get_raw_image_size()[1] - result[3])
+            self.refresh_preview()
 
 
 control = ThumbnailCreatorControl()
