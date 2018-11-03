@@ -2,6 +2,7 @@
   <dictionary name="dev">
     <words>
       <w>labelwidget</w>
+      <w>menubar</w>
       <w>rgba</w>
     </words>
   </dictionary>

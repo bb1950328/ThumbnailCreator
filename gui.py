@@ -10,12 +10,35 @@ class ThumbnailCreatorGUI:
     def __init__(self):
         self.root = Tk()
         self.root.title("ThumbnailCreator")
+        self.menu = ThumbnailCreatorMenu(self.root)
         self.preview = ThumbnailCreatorPreview(self.root)
         self.background = ThumbnailCreatorBackground(self.root)
         self.stickers = ThumbnailCreatorStickers(self.root)
+        self.root.configure(menu=self.menu.menubar)
         self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
         self.background.root.grid(row=0, column=1, sticky=E + W)
         self.stickers.root.grid(row=1, column=1, sticky=W + E)
+
+
+class ThumbnailCreatorMenu:
+    def __init__(self, parent):
+        self.menubar = Menu(parent)
+
+        self.filemenu = Menu(self.menubar, tearoff=0)
+
+        self.openmenu = Menu(self.filemenu, tearoff=0)
+        self.openmenu.add_command(label="Image...")
+        self.openmenu.add_command(label="Image as Background")
+        self.openmenu.add_command(label="Image as Sticker")
+
+        self.menubar.add_cascade(label="File", menu=self.filemenu)
+        self.filemenu.add_command(label="Exit")
+        self.filemenu.add_cascade(label="Open...", menu=self.openmenu)
+        self.filemenu.add_command(label="Export...")
+        self.filemenu.add_command(label="Save as template...")
+
+        self.editmenu = Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="Edit", menu=self.editmenu)
 
 
 class ThumbnailCreatorPreview:
