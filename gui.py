@@ -174,8 +174,9 @@ class FastCropDialog:
         self.root.wm_title("Fast Crop Backgrounnd Image")
         self.image = image
         w, h = self.image.size
-        self.scale = self.width / w
-        self.canvas = Canvas(self.root, width=w * self.scale, height=h * self.scale)
+        self.scale = w / self.width
+        self.height = int(h / self.scale)
+        self.canvas = Canvas(self.root, width=self.width, height=self.height)
         self.ok_button = Button(self.root, text="OK")
         self.cancel_button = Button(self.root, text="Cancel")
         self.canvas.pack(side=TOP)
@@ -185,20 +186,25 @@ class FastCropDialog:
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
         self.canvas.bind("<Motion>", self.mouse_moved_event)
+        self.canvas.bind("<Button-1>", self.mouse_pressed_event)
+        self.canvas.bind("<B1-Motion>", self.mouse_dragged_event)
+        self.canvas.bind("<ButtonRelease-1>", self.mouse_released_event)
 
         self.dragtype = None
         if existing_crop is not None:
-            self.actual_crop = existing_crop
+            self.actual_crop = tuple(map(int, self.image_xy_to_canvas_xy(*existing_crop)))
         else:
-            self.actual_crop = (0, 0, *image.size)
-        self.photoimage = ImageTk.PhotoImage(self.image)
+            self.actual_crop = (0, 0, *tuple(map(int, self.image_xy_to_canvas_xy(*image.size))))
+        print("actual crop", self.actual_crop, "scale: ", self.scale)
+        self.photoimage = ImageTk.PhotoImage(self.image.resize((self.width, self.height)))
         print(w, h, self.photoimage.width(), self.photoimage.height(), self.canvas.size())
         self.image_id = self.canvas.create_image((0, 0), image=self.photoimage, anchor=NW)
-        self.rect_id1 = self.canvas.create_rectangle(*self.actual_crop, outline="black", dash=(8, 8))
-        self.rect_id2 = self.canvas.create_rectangle(*self.actual_crop, outline="white", dash=(8, 8), dashoff=8)
+        self.rect_id1 = None
+        self.rect_id2 = None
+        self.refresh_rect()
         self.canvas.update()
         self.root.mainloop()
-        return self.actual_crop
+        return tuple(map(int, self.canvas_xy_to_image_xy(*self.actual_crop)))
 
     def ok_event(self):
         self.root.destroy()
@@ -227,8 +233,6 @@ class FastCropDialog:
         on_y2 = abs(event.y - self.actual_crop[3]) < 5
         if not any((on_x1, on_y1, on_x2, on_y2)):
             return None
-        else:
-            print("mouse on line", (on_x1, on_y1, on_x2, on_y2), (event.x, event.y))
         if on_x1 and not on_y1 and not on_y2:  # left line
             return 1
         elif on_x2 and not on_y1 and not on_y2:  # right line
@@ -252,7 +256,6 @@ class FastCropDialog:
         spot = self.mouse_on_spot(event)
         if spot is None:
             self.canvas.config(cursor="")
-            print("not on line", (event.x, event.y))
         elif spot == 1:
             self.canvas.config(cursor="left_side")
         elif spot == 2:
@@ -272,19 +275,76 @@ class FastCropDialog:
 
     def mouse_pressed_event(self, event):
         on_spot = self.mouse_on_spot(event)
+        print("mouse pressed, spot=", on_spot)
         if on_spot is None:
             self.dragtype = -1
         else:
             self.dragtype = on_spot
+        self.drag_start = (event.x, event.y)
 
     def mouse_dragged_event(self, event):
-        pass
+        print("type=", self.dragtype)
+        self.actual_crop = list(self.actual_crop)  # enable assignment
+        if self.dragtype == -1:
+            return
+        elif self.dragtype == 1:
+            self.actual_crop[0] = event.x
+        elif self.dragtype == 2:
+            self.actual_crop[2] = event.x
+        elif self.dragtype == 3:
+            self.actual_crop[1] = event.y
+        elif self.dragtype == 4:
+            self.actual_crop[3] = event.y
+
+        elif self.dragtype == 5:
+            self.actual_crop[0] = event.x
+            self.actual_crop[1] = event.y
+        elif self.dragtype == 6:
+            self.actual_crop[0] = event.x
+            self.actual_crop[3] = event.y
+        elif self.dragtype == 7:
+            self.actual_crop[2] = event.x
+            self.actual_crop[1] = event.y
+        elif self.dragtype == 8:
+            self.actual_crop[2] = event.x
+            self.actual_crop[3] = event.y
+        self.actual_crop = tuple(self.actual_crop)
+        self.check_actual_crop()
+        self.refresh_rect()
 
     def mouse_released_event(self, event):
-        pass
+        self.dragtype = -1
 
-    def canvas_xy_to_image_xy(self, cx, cy):
-        return cx / self.scale, cy / self.scale
+    def canvas_xy_to_image_xy(self, *canvas_coords):
+        image_coords = []
+        for i in canvas_coords:
+            image_coords.append(i * self.scale)
+        return image_coords
 
-    def image_xy_to_canvas_xy(self, ix, iy):
-        return ix * self.scale, iy * self.scale
+    def image_xy_to_canvas_xy(self, *image_coords):
+        canvas_coords = []
+        for i in image_coords:
+            canvas_coords.append(i / self.scale)
+        return canvas_coords
+
+    def check_actual_crop(self):
+        print(self.actual_crop)
+        if self.actual_crop[0] >= self.actual_crop[2]:  # x1 >= x2
+            self.actual_crop[0] = self.actual_crop[2] - 5
+        if self.actual_crop[1] >= self.actual_crop[3]:  # y1 >= y2
+            self.actual_crop[1] = self.actual_crop[3] - 5
+
+    def refresh_rect(self):
+        if self.rect_id1 is None:
+            self.rect_id1 = self.canvas.create_rectangle(*self.actual_crop, outline="black", dash=(8, 8))
+        else:
+            self.canvas.coords(self.rect_id1,
+                               self.actual_crop[0], self.actual_crop[1],
+                               self.actual_crop[2], self.actual_crop[3])
+        if self.rect_id2 is None:
+            self.rect_id2 = self.canvas.create_rectangle(*self.actual_crop, outline="white", dash=(8, 8), dashoff=8)
+        else:
+            self.canvas.coords(self.rect_id2,
+                               self.actual_crop[0], self.actual_crop[1],
+                               self.actual_crop[2], self.actual_crop[3])
+        self.canvas.update()
