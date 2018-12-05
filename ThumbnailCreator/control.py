@@ -79,7 +79,6 @@ class ThumbnailCreatorControl:
             return
         fastcropper = gui.FastCropDialog()
         result = fastcropper.run(self.model.image, self.model.image_crop)
-
         if result is not None:
             self.model.crop_image(*result)
             self.gui.background.update_crop_fields(result[0], result[1],
@@ -88,5 +87,6 @@ class ThumbnailCreatorControl:
             self.refresh_preview()
 
 
-control = ThumbnailCreatorControl()
-control.run()
+def run():
+    control = ThumbnailCreatorControl()
+    control.run()
