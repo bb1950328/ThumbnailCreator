@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="" />
+    <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/toolbox.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,11 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../YT_Toolbox/toolbox.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -428,7 +435,7 @@
       <option name="presentableId" value="Default" />
       <updated>1540975869903</updated>
       <workItem from="1543995720276" duration="1011000" />
-      <workItem from="1544001023848" duration="8987000" />
+      <workItem from="1544001023848" duration="9912000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -563,14 +570,22 @@
       <option name="project" value="LOCAL" />
       <updated>1544018453739</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added toolbox.py">
+      <created>1544019577172</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1544019577172</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9998000" />
+    <option name="totallyTimeSpent" value="10923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="746" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15407854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -616,7 +631,8 @@
     <MESSAGE value="doing refactors" />
     <MESSAGE value="adding class tool to manage the tools" />
     <MESSAGE value="moved ThumbnailCreator to apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved ThumbnailCreator to apps" />
+    <MESSAGE value="added toolbox.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="added toolbox.py" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -768,7 +784,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../YT_Toolbox/toolbox.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
