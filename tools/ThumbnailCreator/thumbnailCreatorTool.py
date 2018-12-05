@@ -1,8 +1,7 @@
-from concurrent.futures import ThreadPoolExecutor
 from threading import Thread
 
 from tool import Tool
-from ThumbnailCreator import control
+from tools.ThumbnailCreator import control
 
 
 class ThumbnailCreatorTool(Tool):
@@ -25,3 +24,9 @@ class ThumbnailCreatorTool(Tool):
 
     def get_icon_path(self):
         return None
+
+    def get_description(self):
+        return "a tool to create thumbnails"
+
+    def get_Name(self):
+        return "ThumbnailCreator"

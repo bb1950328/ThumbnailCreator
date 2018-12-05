@@ -13,3 +13,9 @@ class Tool:
 
     def can_run(self):
         return False
+
+    def get_description(self):
+        return "this is just the parent class for every tool and cannot be runned."
+
+    def get_Name(self):
+        return "Tool"

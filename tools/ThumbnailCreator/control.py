@@ -1,4 +1,4 @@
-from ThumbnailCreator import model, gui
+from tools.ThumbnailCreator import model, gui
 
 
 class ThumbnailCreatorControl:
