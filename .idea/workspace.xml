@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/sticker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/thumbnailCreatorTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/thumbnailCreatorTool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YT_Toolbox/tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/../YT_Toolbox/tool.py" afterDir="false" />
-    </list>
+    <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../YT_Toolbox/tool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+            <state relative-caret-position="225">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -90,13 +81,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/thumbnailCreatorTool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            <state relative-caret-position="450">
+              <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../YT_Toolbox/toolbox.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -131,6 +127,8 @@
         <option value="$PROJECT_DIR$/../YT_Toolbox/ThumbnailCreator/thumbnailCreatorTool.py" />
         <option value="$PROJECT_DIR$/../YT_Toolbox/README.md" />
         <option value="$PROJECT_DIR$/../YT_Toolbox/tool.py" />
+        <option value="$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/thumbnailCreatorTool.py" />
+        <option value="$PROJECT_DIR$/../YT_Toolbox/toolbox.py" />
       </list>
     </option>
   </component>
@@ -430,7 +428,7 @@
       <option name="presentableId" value="Default" />
       <updated>1540975869903</updated>
       <workItem from="1543995720276" duration="1011000" />
-      <workItem from="1544001023848" duration="7968000" />
+      <workItem from="1544001023848" duration="8987000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -558,15 +556,21 @@
       <option name="project" value="LOCAL" />
       <updated>1544015078276</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="moved ThumbnailCreator to apps">
+      <created>1544018453739</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1544018453739</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8979000" />
+    <option name="totallyTimeSpent" value="9998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="746" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15407854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -611,7 +615,8 @@
     <MESSAGE value="added dialog for fast crop (not working yet)" />
     <MESSAGE value="doing refactors" />
     <MESSAGE value="adding class tool to manage the tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding class tool to manage the tools" />
+    <MESSAGE value="moved ThumbnailCreator to apps" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved ThumbnailCreator to apps" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -735,16 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/thumbnailCreatorTool.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../YT_Toolbox/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -757,10 +752,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../YT_Toolbox/tool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        <state relative-caret-position="225">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="21" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../YT_Toolbox/tools/ThumbnailCreator/thumbnailCreatorTool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../YT_Toolbox/toolbox.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
