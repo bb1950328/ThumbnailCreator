@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YT_Toolbox_Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/YT_Toolbox_Start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolbox.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +16,7 @@
     <SUITE FILE_PATH="coverage/YT_Toolbox$control__1_.coverage" NAME="control (1) Coverage Results" MODIFIED="1544003718340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ThumbnailCreator" />
     <SUITE FILE_PATH="coverage/YT_Toolbox$control.coverage" NAME="control Coverage Results" MODIFIED="1544003691257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ThumbnailCreator$control.coverage" NAME="control Coverage Results" MODIFIED="1543997839557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/YT_Toolbox$YT_Toolbox_Start.coverage" NAME="YT_Toolbox_Start Coverage Results" MODIFIED="1544086475435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/YT_Toolbox$YT_Toolbox_Start.coverage" NAME="YT_Toolbox_Start Coverage Results" MODIFIED="1544104050317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -96,8 +98,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/toolbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="39" column="44" lean-forward="true" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+            <state relative-caret-position="242">
+              <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/YT_Toolbox_Start.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            <state relative-caret-position="90">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -146,9 +151,9 @@
         <option value="$PROJECT_DIR$/ThumbnailCreator/thumbnailCreatorTool.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tool.py" />
-        <option value="$PROJECT_DIR$/toolbox.py" />
         <option value="$PROJECT_DIR$/tools/ThumbnailCreator/thumbnailCreatorTool.py" />
         <option value="$PROJECT_DIR$/YT_Toolbox_Start.py" />
+        <option value="$PROJECT_DIR$/toolbox.py" />
       </list>
     </option>
   </component>
@@ -170,11 +175,6 @@
             <path>
               <item name="YT_Toolbox" type="b2602c69:ProjectViewProjectNode" />
               <item name="YT_Toolbox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YT_Toolbox" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YT_Toolbox" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YT_Toolbox" type="b2602c69:ProjectViewProjectNode" />
@@ -299,7 +299,7 @@
       <workItem from="1543995720276" duration="1011000" />
       <workItem from="1544001023848" duration="12596000" />
       <workItem from="1544081117308" duration="1915000" />
-      <workItem from="1544083382113" duration="1267000" />
+      <workItem from="1544083382113" duration="6035000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -462,28 +462,35 @@
       <option name="project" value="LOCAL" />
       <updated>1544082374725</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added standard icon">
+      <created>1544097390276</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1544097390277</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16789000" />
+    <option name="totallyTimeSpent" value="21557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="746" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15833333" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15833333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4969697" visible="true" weight="0.27993527" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4988831" weight="0.39871383" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49848485" weight="0.32847896" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4939394" visible="true" weight="0.27993527" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49772727" weight="0.39805827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4996277" weight="0.3697749" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5030303" side_tool="true" visible="true" weight="0.27993527" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5060606" side_tool="true" visible="true" weight="0.27993527" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32874355" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
@@ -517,7 +524,9 @@
     <MESSAGE value="moved ThumbnailCreator to apps" />
     <MESSAGE value="added toolbox.py" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="added standard icon" />
+    <MESSAGE value="toolbox responses when changing window's size" />
+    <option name="LAST_COMMIT_MESSAGE" value="toolbox responses when changing window's size" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -532,6 +541,11 @@
           <url>file://$PROJECT_DIR$/tools/ThumbnailCreator/control.py</url>
           <line>26</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/toolbox.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -670,8 +684,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/YT_Toolbox_Start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -680,8 +694,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/toolbox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="39" column="44" lean-forward="true" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        <state relative-caret-position="242">
+          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
