@@ -172,6 +172,8 @@ class ThumbnailCreatorStickers:
         self.root["labelwidget"] = self.root_label
 
         self.tree = ttk.Treeview(self.root)
+        for h in ("Name", "Type", "Size", "Position"):
+            self.tree.heading(h, text=h)  # TODO gives error
         self.add_button = Button(self.root)
         self.add_button["text"] = "Add..."
         self.add_button["padx"] = 5
@@ -194,6 +196,35 @@ class ThumbnailCreatorStickers:
         self.modify_button.grid(column=2, row=1)
         self.up_button.grid(column=3, row=1)
         self.down_button.grid(column=4, row=1)
+
+        self.add_button["command"] = self.add_button_clicked
+        self.delete_button["command"] = self.delete_button_clicked
+        self.modify_button["command"] = self.modify_button_clicked
+        self.up_button["command"] = self.up_button_clicked
+        self.down_button["command"] = self.down_button_clicked
+
+    def get_selected_indexes(self):
+        n = self.tree
+
+    def add_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def delete_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def modify_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def up_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def down_button_clicked(self, *args):
+        # TODO
+        pass
 
 
 class FastCropDialog:

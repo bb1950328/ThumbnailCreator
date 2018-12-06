@@ -1,4 +1,4 @@
-from tkinter import Tk, Frame, Label, messagebox, LabelFrame
+from tkinter import Tk, Label, messagebox, LabelFrame
 
 from PIL import Image, ImageTk
 
