@@ -15,12 +15,20 @@ class Toolbox:
         columns = width / ICONSIZE
         c = r = 0
         for ts in self.toolStarters:
-            pass
-            # TODO
+            fr = ts.generate_frame(self.root)
+            fr.grid(column=c, row=r)
+            if c == columns:
+                r += 1
+                c = 0
 
     def run(self):
         self.root = Tk()
         self.root.title("YT Toolbox")
+        self.refresh_toolstarters()
+        self.root.mainloop()
+
+    def add_tool(self, tool):
+        self.toolStarters.append(ToolStarter(tool))
 
 
 class ToolStarter:

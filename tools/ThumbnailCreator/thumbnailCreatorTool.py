@@ -30,3 +30,6 @@ class ThumbnailCreatorTool(Tool):
 
     def get_Name(self):
         return "ThumbnailCreator"
+
+    def get_icon_path(self):
+        return None
