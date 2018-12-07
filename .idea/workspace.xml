@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/start_directly.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/ThumbnailCreator/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/gui.py" afterDir="false" />
     </list>
@@ -17,7 +16,7 @@
     <SUITE FILE_PATH="coverage/YT_Toolbox$control.coverage" NAME="control Coverage Results" MODIFIED="1544109340268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/YT_Toolbox$toolbox.coverage" NAME="toolbox Coverage Results" MODIFIED="1544106089090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ThumbnailCreator$control.coverage" NAME="control Coverage Results" MODIFIED="1543997839557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/YT_Toolbox$start_directly.coverage" NAME="start_directly Coverage Results" MODIFIED="1544180328628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools/ThumbnailCreator" />
+    <SUITE FILE_PATH="coverage/YT_Toolbox$start_directly.coverage" NAME="start_directly Coverage Results" MODIFIED="1544184878934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools/ThumbnailCreator" />
     <SUITE FILE_PATH="coverage/YT_Toolbox$YT_Toolbox_Start.coverage" NAME="YT_Toolbox_Start Coverage Results" MODIFIED="1544179433042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/ThumbnailCreator/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="194" column="64" selection-start-line="194" selection-start-column="64" selection-end-line="194" selection-end-column="64" />
+            <state relative-caret-position="185">
+              <caret line="184" column="55" lean-forward="true" selection-start-line="184" selection-start-column="55" selection-end-line="184" selection-end-column="55" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#9769#17198#0" />
@@ -39,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/tools/ThumbnailCreator/start_directly.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -359,7 +358,7 @@
       <workItem from="1544083382113" duration="6783000" />
       <workItem from="1544105279881" duration="3142000" />
       <workItem from="1544167669314" duration="3154000" />
-      <workItem from="1544173628244" duration="6326000" />
+      <workItem from="1544173628244" duration="7211000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -550,11 +549,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544173743449</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="no comment">
+      <created>1544183913655</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1544183913655</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34927000" />
+    <option name="totallyTimeSpent" value="35812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1372" height="746" extended-state="6" />
@@ -793,14 +799,14 @@
     <entry file="file://$PROJECT_DIR$/tools/ThumbnailCreator/start_directly.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/ThumbnailCreator/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="194" column="64" selection-start-line="194" selection-start-column="64" selection-end-line="194" selection-end-column="64" />
+        <state relative-caret-position="185">
+          <caret line="184" column="55" lean-forward="true" selection-start-line="184" selection-start-column="55" selection-end-line="184" selection-end-column="55" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#9769#17198#0" />

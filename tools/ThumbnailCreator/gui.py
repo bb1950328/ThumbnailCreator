@@ -177,13 +177,15 @@ class ThumbnailCreatorBackground:
 
 class ThumbnailCreatorStickers:
     def __init__(self, parent):
-        self.root = tkinter.LabelFrame(parent, background="yellow")
+        self.root = tkinter.LabelFrame(parent)
         self.root_label = tkinter.Label(self.root)
         self.root_label["text"] = "Stickers"
         self.root["labelwidget"] = self.root_label
-
+        for c in range(5):
+            self.root.grid_columnconfigure(c, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
         columns = ["Name", "Type", "Size", "Position"]
-        self.treeframe = tkinter.Frame(self.root, background="blue")
+        self.treeframe = tkinter.Frame(self.root)
         self.treeframe.grid_columnconfigure(0, weight=1)
         self.tree = ttk.Treeview(self.treeframe, columns=columns)
         self.tree_xsb = ttk.Scrollbar(self.treeframe, orient='horizontal', command=self.tree.xview)
@@ -212,11 +214,11 @@ class ThumbnailCreatorStickers:
         self.down_button["padx"] = 5
 
         self.treeframe.grid(column=0, row=0, columnspan=5, sticky=tkinter.E + tkinter.W)
-        self.add_button.grid(column=0, row=1)
-        self.delete_button.grid(column=1, row=1)
-        self.modify_button.grid(column=2, row=1)
-        self.up_button.grid(column=3, row=1)
-        self.down_button.grid(column=4, row=1)
+        self.add_button.grid(column=0, row=1, sticky=tkinter.E + tkinter.W)
+        self.delete_button.grid(column=1, row=1, sticky=tkinter.E + tkinter.W)
+        self.modify_button.grid(column=2, row=1, sticky=tkinter.E + tkinter.W)
+        self.up_button.grid(column=3, row=1, sticky=tkinter.E + tkinter.W)
+        self.down_button.grid(column=4, row=1, sticky=tkinter.E + tkinter.W)
 
         self.add_button["command"] = self.add_button_clicked
         self.delete_button["command"] = self.delete_button_clicked
