@@ -62,6 +62,24 @@ class Sticker:
             tl_pos[0] -= self.size[0] / 2
         return tl_pos
 
+    def get_display_name(self):
+        return self.name
+
+    def get_display_type(self):
+        return "Sticker"
+
+    def get_display_size(self):
+        if self.size is None:
+            return "-"
+        if isinstance(self.size, int) or isinstance(self.size, float):
+            return str(self.size)
+        return ", ".join(self.size)
+
+    def get_display_position(self):
+        if self.position is None:
+            return "-"
+        return "x".join(self.position)
+
 
 class TextSticker(Sticker):
     text = None

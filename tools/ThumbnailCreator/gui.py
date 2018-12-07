@@ -5,6 +5,8 @@ from tkinter import filedialog, ttk
 from PIL import Image as PILImage
 from PIL import ImageTk
 
+from tools.ThumbnailCreator import sticker
+
 
 class ThumbnailCreatorGUI:
     def __init__(self):
@@ -177,6 +179,7 @@ class ThumbnailCreatorBackground:
 
 class ThumbnailCreatorStickers:
     def __init__(self, parent):
+        self.stickers = []
         self.root = tkinter.LabelFrame(parent)
         self.root_label = tkinter.Label(self.root)
         self.root_label["text"] = "Stickers"
@@ -184,7 +187,7 @@ class ThumbnailCreatorStickers:
         for c in range(5):
             self.root.grid_columnconfigure(c, weight=1)
         self.root.grid_rowconfigure(0, weight=1)
-        columns = ["Name", "Type", "Size", "Position"]
+        columns = ("Name", "Type", "Size", "Position")
         self.treeframe = tkinter.Frame(self.root)
         self.treeframe.grid_columnconfigure(0, weight=1)
         self.tree = ttk.Treeview(self.treeframe, columns=columns)
@@ -226,12 +229,42 @@ class ThumbnailCreatorStickers:
         self.up_button["command"] = self.up_button_clicked
         self.down_button["command"] = self.down_button_clicked
 
+    def add_sticker(self, stickerobj):
+        self.stickers.append(stickerobj)
+        self.refresh_tree()
+
+    def refresh_tree(self, keep_selection=True):
+        old_selection = self.get_selected_indexes()
+        self.tree.delete(*self.tree.get_children())
+        for n in self.stickers:
+            name = type_ = size = position = ""
+            try:
+                name = n.get_display_name()
+            except NameError:
+                pass
+            try:
+                type_ = n.get_display_type()
+            except NameError:
+                pass
+            try:
+                size = n.get_display_size()
+            except NameError:
+                pass
+            try:
+                position = n.get_display_position()
+            except NameError:
+                pass
+
+            self.tree.insert("", "end", values=(name, type_, size, position))
+            if keep_selection:
+                self.tree.selection_add(old_selection)
+
     def get_selected_indexes(self):
-        # TODO
-        n = self.tree
+        return self.tree.selection()
 
     def add_button_clicked(self, *args):
         # TODO
+        self.add_sticker(sticker.TextSticker())
         pass
 
     def delete_button_clicked(self, *args):
