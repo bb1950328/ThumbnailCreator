@@ -15,6 +15,7 @@ class ThumbnailCreatorGUI:
         self.background = ThumbnailCreatorBackground(self.root)
         self.stickers = ThumbnailCreatorStickers(self.root)
         self.root.configure(menu=self.menu.menubar)
+        tkinter.Grid.columnconfigure(self.root, 1, weight=1)
         self.preview.root.grid(row=0, column=0, rowspan=2,
                                sticky=tkinter.N + tkinter.E + tkinter.S + tkinter.W)
         self.background.root.grid(row=0, column=1, sticky=tkinter.E + tkinter.W)
@@ -176,15 +177,24 @@ class ThumbnailCreatorBackground:
 
 class ThumbnailCreatorStickers:
     def __init__(self, parent):
-        self.root = tkinter.LabelFrame(parent)
+        self.root = tkinter.LabelFrame(parent, background="yellow")
         self.root_label = tkinter.Label(self.root)
         self.root_label["text"] = "Stickers"
         self.root["labelwidget"] = self.root_label
 
-        self.tree = ttk.Treeview(self.root)
         columns = ["Name", "Type", "Size", "Position"]
+        self.treeframe = tkinter.Frame(self.root, background="blue")
+        self.treeframe.grid_columnconfigure(0, weight=1)
+        self.tree = ttk.Treeview(self.treeframe, columns=columns)
+        self.tree_xsb = ttk.Scrollbar(self.treeframe, orient='horizontal', command=self.tree.xview)
+        self.tree_ysb = ttk.Scrollbar(self.treeframe, orient='vertical', command=self.tree.yview)
+        self.tree_xsb.grid(row=1, column=0, sticky=tkinter.E + tkinter.W)
+        self.tree_ysb.grid(row=0, column=1, sticky=tkinter.N + tkinter.S)
         for ih in range(len(columns)):
-            self.tree.heading("#" + ih, text=columns[ih])  # TODO gives error
+            self.tree.heading("#" + str(ih), text=columns[ih])
+            self.tree.column(columns[ih], stretch=True, width=32)
+        self.tree.grid(row=0, column=0, sticky=tkinter.E + tkinter.W)
+
         self.add_button = tkinter.Button(self.root)
         self.add_button["text"] = "Add..."
         self.add_button["padx"] = 5
@@ -201,8 +211,7 @@ class ThumbnailCreatorStickers:
         self.down_button["text"] = "Down"
         self.down_button["padx"] = 5
 
-        self.tree.grid(column=0, row=0, columnspan=5,
-                       sticky=tkinter.N + tkinter.E + tkinter.S + tkinter.W)
+        self.treeframe.grid(column=0, row=0, columnspan=5, sticky=tkinter.E + tkinter.W)
         self.add_button.grid(column=0, row=1)
         self.delete_button.grid(column=1, row=1)
         self.modify_button.grid(column=2, row=1)
