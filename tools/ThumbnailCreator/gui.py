@@ -223,11 +223,11 @@ class ThumbnailCreatorStickers:
         self.up_button.grid(column=3, row=1, sticky=tkinter.E + tkinter.W)
         self.down_button.grid(column=4, row=1, sticky=tkinter.E + tkinter.W)
 
-        self.add_button["command"] = self.add_button_clicked
-        self.delete_button["command"] = self.delete_button_clicked
-        self.modify_button["command"] = self.modify_button_clicked
-        self.up_button["command"] = self.up_button_clicked
-        self.down_button["command"] = self.down_button_clicked
+        # self.add_button["command"] = self.add_button_clicked
+        # self.delete_button["command"] = self.delete_button_clicked
+        # self.modify_button["command"] = self.modify_button_clicked
+        # self.up_button["command"] = self.up_button_clicked
+        # self.down_button["command"] = self.down_button_clicked
 
     def add_sticker(self, stickerobj):
         self.stickers.append(stickerobj)
@@ -262,26 +262,6 @@ class ThumbnailCreatorStickers:
     def get_selected_indexes(self):
         return self.tree.selection()
 
-    def add_button_clicked(self, *args):
-        # TODO
-        self.add_sticker(sticker.TextSticker())
-        pass
-
-    def delete_button_clicked(self, *args):
-        # TODO
-        pass
-
-    def modify_button_clicked(self, *args):
-        # TODO
-        pass
-
-    def up_button_clicked(self, *args):
-        # TODO
-        pass
-
-    def down_button_clicked(self, *args):
-        # TODO
-        pass
 
 
 class FastCropDialog:

@@ -19,6 +19,12 @@ class ThumbnailCreatorControl:
         self.gui.background.crop_y2_value.trace("w", self.crop_event)
         self.gui.background.fast_crop_button["command"] = self.fast_crop
 
+        self.gui.stickers.add_button["command"] = self.add_button_clicked
+        self.gui.stickers.delete_button["command"] = self.sticker_delete_button_clicked
+        self.gui.stickers.modify_button["command"] = self.sticker_modify_button_clicked
+        self.gui.stickers.up_button["command"] = self.sticker_up_button_clicked
+        self.gui.stickers.down_button["command"] = self.sticker_down_button_clicked
+
     def run(self):
         self.gui.root.mainloop()
 
@@ -85,6 +91,27 @@ class ThumbnailCreatorControl:
                                                    self.model.get_raw_image_size()[0] - result[2],
                                                    self.model.get_raw_image_size()[1] - result[3])
             self.refresh_preview()
+
+    def add_button_clicked(self, *args):
+        # TODO
+        self.add_sticker(sticker.TextSticker())
+        pass
+
+    def sticker_delete_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def sticker_modify_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def sticker_up_button_clicked(self, *args):
+        # TODO
+        pass
+
+    def sticker_down_button_clicked(self, *args):
+        # TODO
+        pass
 
 
 def run():
