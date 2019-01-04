@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ThumbnailCreator.iml" filepath="$PROJECT_DIR$/.idea/ThumbnailCreator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../YT_Toolbox/.idea/YT_Toolbox.iml" filepath="$PROJECT_DIR$/../YT_Toolbox/.idea/YT_Toolbox.iml" />
     </modules>
   </component>
 </project>

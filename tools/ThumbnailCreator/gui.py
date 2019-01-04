@@ -1,32 +1,36 @@
 import os
-from tkinter import *
+import tkinter
 from tkinter import filedialog, ttk
 
 from PIL import Image as PILImage
 from PIL import ImageTk
 
+from tools.ThumbnailCreator import sticker
+
 
 class ThumbnailCreatorGUI:
     def __init__(self):
-        self.root = Tk()
-        self.root.title("ThumbnailCreator")
+        self.root = tkinter.Tk()
+        self.root.title("YT_Toolbox")
         self.menu = ThumbnailCreatorMenu(self.root)
         self.preview = ThumbnailCreatorPreview(self.root)
         self.background = ThumbnailCreatorBackground(self.root)
         self.stickers = ThumbnailCreatorStickers(self.root)
         self.root.configure(menu=self.menu.menubar)
-        self.preview.root.grid(row=0, column=0, rowspan=2, sticky=N + E + S + W)
-        self.background.root.grid(row=0, column=1, sticky=E + W)
-        self.stickers.root.grid(row=1, column=1, sticky=W + E)
+        tkinter.Grid.columnconfigure(self.root, 1, weight=1)
+        self.preview.root.grid(row=0, column=0, rowspan=2,
+                               sticky=tkinter.N + tkinter.E + tkinter.S + tkinter.W)
+        self.background.root.grid(row=0, column=1, sticky=tkinter.E + tkinter.W)
+        self.stickers.root.grid(row=1, column=1, sticky=tkinter.W + tkinter.E)
 
 
 class ThumbnailCreatorMenu:
     def __init__(self, parent):
-        self.menubar = Menu(parent)
+        self.menubar = tkinter.Menu(parent)
 
-        self.filemenu = Menu(self.menubar, tearoff=0)
+        self.filemenu = tkinter.Menu(self.menubar, tearoff=0)
 
-        self.openmenu = Menu(self.filemenu, tearoff=0)
+        self.openmenu = tkinter.Menu(self.filemenu, tearoff=0)
         self.openmenu.add_command(label="Image...")
         self.openmenu.add_command(label="Image as Background")
         self.openmenu.add_command(label="Image as Sticker")
@@ -37,7 +41,7 @@ class ThumbnailCreatorMenu:
         self.filemenu.add_command(label="Export...")
         self.filemenu.add_command(label="Save as template...")
 
-        self.editmenu = Menu(self.menubar, tearoff=0)
+        self.editmenu = tkinter.Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
 
 
@@ -46,11 +50,11 @@ class ThumbnailCreatorPreview:
         self.width = 500
         self.height = None
         self.image_id = None
-        self.root = LabelFrame(parent)
-        self.label = Label(self.root)
+        self.root = tkinter.LabelFrame(parent)
+        self.label = tkinter.Label(self.root)
         self.label["text"] = "Preview"
         self.root["labelwidget"] = self.label
-        self.canvas = Canvas(self.root, bg="white")
+        self.canvas = tkinter.Canvas(self.root, bg="white")
         self.canvas.pack()
 
     def clear(self):
@@ -68,7 +72,7 @@ class ThumbnailCreatorPreview:
         self.root.photo = photo
         self.canvas["height"] = self.height
         self.canvas["width"] = self.width
-        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)
+        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=tkinter.NW)
         # self.image_id = self.canvas.create_rectangle(x1=5, x2=10, y1=5, y2=10, fill="red")
         self.canvas.update()
         print("updated preview", self.image_id, photo)
@@ -79,7 +83,7 @@ class ThumbnailCreatorPreview:
         self.width, self.height = image.size
         self.canvas["height"] = self.height
         self.canvas["width"] = self.width
-        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=NW)
+        self.image_id = self.canvas.create_image((0, 0), image=photo, anchor=tkinter.NW)
         # self.image_id = self.canvas.create_rectangle(x1=5, x2=10, y1=5, y2=10, fill="red")
         self.canvas.update()
         print("updated preview raw", self.image_id, photo)
@@ -91,64 +95,72 @@ class ThumbnailCreatorPreview:
 
 class ThumbnailCreatorBackground:
     def __init__(self, parent):
-        self.root = LabelFrame(parent)
-        self.label = Label(self.root)
+        self.root = tkinter.LabelFrame(parent)
+        self.label = tkinter.Label(self.root)
         self.label["text"] = "Image Background"
         self.root["labelwidget"] = self.label
 
-        self.filePathFrame = LabelFrame(self.root)
-        self.filePathLabel = Label(self.root)
+        self.filePathFrame = tkinter.LabelFrame(self.root)
+        self.filePathLabel = tkinter.Label(self.root)
         self.filePathLabel["text"] = "Image File"
         self.filePathFrame["labelwidget"] = self.filePathLabel
         self.filePathFrame.grid(row=0, column=0)
-        self.filePath = StringVar()
-        self.filePathEntry = Entry(self.filePathFrame)
+        self.filePath = tkinter.StringVar()
+        self.filePathEntry = tkinter.Entry(self.filePathFrame)
         self.filePathEntry["textvariable"] = self.filePath
         self.filePathEntry.grid(row=0, column=0)
-        self.filePathBrowseButton = Button(self.filePathFrame)
+        self.filePathBrowseButton = tkinter.Button(self.filePathFrame)
         self.filePathBrowseButton["text"] = "Browse..."
         self.filePathBrowseButton["command"] = self.choose_file
         self.filePathBrowseButton.grid(row=0, column=1)
 
-        self.cropFrame = LabelFrame(self.root)
-        self.cropLabel = Label(self.root)
+        self.cropFrame = tkinter.LabelFrame(self.root)
+        self.cropLabel = tkinter.Label(self.root)
         self.cropLabel["text"] = "Crop"
         self.cropFrame["labelwidget"] = self.cropLabel
         self.cropFrame.grid(row=1, column=0)
 
-        self.crop_x1_label = Label(self.cropFrame)
+        self.crop_x1_label = tkinter.Label(self.cropFrame)
         self.crop_x1_label["text"] = "Left"
-        self.crop_x1_value = IntVar()
+        self.crop_x1_value = tkinter.IntVar()
         self.crop_x1_value.set(0)
-        self.crop_x1_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_x1_value, from_=0, to_=10000)
+        self.crop_x1_spinbox = tkinter.Spinbox(self.cropFrame,
+                                               textvariable=self.crop_x1_value,
+                                               from_=0, to_=10000)
         self.crop_x1_label.grid(column=0, row=0)
         self.crop_x1_spinbox.grid(column=1, row=0)
 
-        self.crop_x2_label = Label(self.cropFrame)
+        self.crop_x2_label = tkinter.Label(self.cropFrame)
         self.crop_x2_label["text"] = "Right"
-        self.crop_x2_value = IntVar()
+        self.crop_x2_value = tkinter.IntVar()
         self.crop_x2_value.set(0)
-        self.crop_x2_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_x2_value, from_=0, to_=10000)
+        self.crop_x2_spinbox = tkinter.Spinbox(self.cropFrame,
+                                               textvariable=self.crop_x2_value,
+                                               from_=0, to_=10000)
         self.crop_x2_label.grid(column=0, row=1)
         self.crop_x2_spinbox.grid(column=1, row=1)
 
-        self.crop_y1_label = Label(self.cropFrame)
+        self.crop_y1_label = tkinter.Label(self.cropFrame)
         self.crop_y1_label["text"] = "Top"
-        self.crop_y1_value = IntVar()
+        self.crop_y1_value = tkinter.IntVar()
         self.crop_y1_value.set(0)
-        self.crop_y1_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_y1_value, from_=0, to_=10000)
+        self.crop_y1_spinbox = tkinter.Spinbox(self.cropFrame,
+                                               textvariable=self.crop_y1_value,
+                                               from_=0, to_=10000)
         self.crop_y1_label.grid(column=0, row=2)
         self.crop_y1_spinbox.grid(column=1, row=2)
 
-        self.crop_y2_label = Label(self.cropFrame)
+        self.crop_y2_label = tkinter.Label(self.cropFrame)
         self.crop_y2_label["text"] = "Bottom"
-        self.crop_y2_value = IntVar()
+        self.crop_y2_value = tkinter.IntVar()
         self.crop_y2_value.set(0)
-        self.crop_y2_spinbox = Spinbox(self.cropFrame, textvariable=self.crop_y2_value, from_=0, to_=10000)
+        self.crop_y2_spinbox = tkinter.Spinbox(self.cropFrame,
+                                               textvariable=self.crop_y2_value,
+                                               from_=0, to_=10000)
         self.crop_y2_label.grid(column=0, row=3)
         self.crop_y2_spinbox.grid(column=1, row=3)
 
-        self.fast_crop_button = Button(self.cropFrame)
+        self.fast_crop_button = tkinter.Button(self.cropFrame)
         self.fast_crop_button["text"] = "Fast\nCrop"
         self.fast_crop_button.grid(column=2, row=1, rowspan=4)
 
@@ -159,59 +171,115 @@ class ThumbnailCreatorBackground:
         self.crop_y2_value.set(y2)
 
     def choose_file(self):
-        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select background image")
-        self.filePathEntry.delete(0, END)
+        filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                              title="Select background image")
+        self.filePathEntry.delete(0, tkinter.END)
         self.filePathEntry.insert(0, filename)
 
 
 class ThumbnailCreatorStickers:
     def __init__(self, parent):
-        self.root = LabelFrame(parent)
-        self.root_label = Label(self.root)
+        self.stickers = []
+        self.root = tkinter.LabelFrame(parent)
+        self.root_label = tkinter.Label(self.root)
         self.root_label["text"] = "Stickers"
         self.root["labelwidget"] = self.root_label
+        for c in range(5):
+            self.root.grid_columnconfigure(c, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
+        columns = ("Name", "Type", "Size", "Position")
+        self.treeframe = tkinter.Frame(self.root)
+        self.treeframe.grid_columnconfigure(0, weight=1)
+        self.tree = ttk.Treeview(self.treeframe, columns=columns)
+        self.tree_xsb = ttk.Scrollbar(self.treeframe, orient='horizontal', command=self.tree.xview)
+        self.tree_ysb = ttk.Scrollbar(self.treeframe, orient='vertical', command=self.tree.yview)
+        self.tree_xsb.grid(row=1, column=0, sticky=tkinter.E + tkinter.W)
+        self.tree_ysb.grid(row=0, column=1, sticky=tkinter.N + tkinter.S)
+        for ih in range(len(columns)):
+            self.tree.heading("#" + str(ih), text=columns[ih])
+            self.tree.column(columns[ih], stretch=True, width=32)
+        self.tree.grid(row=0, column=0, sticky=tkinter.E + tkinter.W)
 
-        self.tree = ttk.Treeview(self.root)
-        self.add_button = Button(self.root)
+        self.add_button = tkinter.Button(self.root)
         self.add_button["text"] = "Add..."
         self.add_button["padx"] = 5
-        self.delete_button = Button(self.root)
+        self.delete_button = tkinter.Button(self.root)
         self.delete_button["text"] = "Delete"
         self.delete_button["padx"] = 5
-        self.modify_button = Button(self.root)
+        self.modify_button = tkinter.Button(self.root)
         self.modify_button["text"] = "Modify..."
         self.modify_button["padx"] = 5
-        self.up_button = Button(self.root)
+        self.up_button = tkinter.Button(self.root)
         self.up_button["text"] = "Up"
         self.up_button["padx"] = 5
-        self.down_button = Button(self.root)
+        self.down_button = tkinter.Button(self.root)
         self.down_button["text"] = "Down"
         self.down_button["padx"] = 5
 
-        self.tree.grid(column=0, row=0, columnspan=5, sticky=N + E + S + W)
-        self.add_button.grid(column=0, row=1)
-        self.delete_button.grid(column=1, row=1)
-        self.modify_button.grid(column=2, row=1)
-        self.up_button.grid(column=3, row=1)
-        self.down_button.grid(column=4, row=1)
+        self.treeframe.grid(column=0, row=0, columnspan=5, sticky=tkinter.E + tkinter.W)
+        self.add_button.grid(column=0, row=1, sticky=tkinter.E + tkinter.W)
+        self.delete_button.grid(column=1, row=1, sticky=tkinter.E + tkinter.W)
+        self.modify_button.grid(column=2, row=1, sticky=tkinter.E + tkinter.W)
+        self.up_button.grid(column=3, row=1, sticky=tkinter.E + tkinter.W)
+        self.down_button.grid(column=4, row=1, sticky=tkinter.E + tkinter.W)
+
+        # self.add_button["command"] = self.add_button_clicked
+        # self.delete_button["command"] = self.delete_button_clicked
+        # self.modify_button["command"] = self.modify_button_clicked
+        # self.up_button["command"] = self.up_button_clicked
+        # self.down_button["command"] = self.down_button_clicked
+
+    def add_sticker(self, stickerobj):
+        self.stickers.append(stickerobj)
+        self.refresh_tree()
+
+    def refresh_tree(self, keep_selection=True):
+        old_selection = self.get_selected_indexes()
+        self.tree.delete(*self.tree.get_children())
+        for n in self.stickers:
+            name = type_ = size = position = ""
+            try:
+                name = n.get_display_name()
+            except NameError:
+                pass
+            try:
+                type_ = n.get_display_type()
+            except NameError:
+                pass
+            try:
+                size = n.get_display_size()
+            except NameError:
+                pass
+            try:
+                position = n.get_display_position()
+            except NameError:
+                pass
+
+            self.tree.insert("", "end", values=(name, type_, size, position))
+            if keep_selection:
+                self.tree.selection_add(old_selection)
+
+    def get_selected_indexes(self):
+        return self.tree.selection()
+
 
 
 class FastCropDialog:
     def run(self, image, existing_crop=None):
         self.backup_crop = existing_crop
         self.width = 1000
-        self.root = Toplevel()
+        self.root = tkinter.Toplevel()
         self.root.wm_title("Fast Crop Backgrounnd Image")
         self.image = image
         w, h = self.image.size
         self.scale = w / self.width
         self.height = int(h / self.scale)
-        self.canvas = Canvas(self.root, width=self.width, height=self.height)
-        self.ok_button = Button(self.root, text="OK")
-        self.cancel_button = Button(self.root, text="Cancel")
-        self.canvas.pack(side=TOP)
-        self.ok_button.pack(side=RIGHT)
-        self.cancel_button.pack(side=RIGHT)
+        self.canvas = tkinter.Canvas(self.root, width=self.width, height=self.height)
+        self.ok_button = tkinter.Button(self.root, text="OK")
+        self.cancel_button = tkinter.Button(self.root, text="Cancel")
+        self.canvas.pack(side=tkinter.TOP)
+        self.ok_button.pack(side=tkinter.RIGHT)
+        self.cancel_button.pack(side=tkinter.RIGHT)
 
         self.ok_button["command"] = self.ok_event
         self.cancel_button["command"] = self.cancel_event
@@ -230,7 +298,7 @@ class FastCropDialog:
         print("actual crop", self.actual_crop, "scale: ", self.scale)
         self.photoimage = ImageTk.PhotoImage(self.image.resize((self.width, self.height)))
         print(w, h, self.photoimage.width(), self.photoimage.height(), self.canvas.size())
-        self.image_id = self.canvas.create_image((0, 0), image=self.photoimage, anchor=NW)
+        self.image_id = self.canvas.create_image((0, 0), image=self.photoimage, anchor=tkinter.NW)
         self.rect_id1 = None
         self.rect_id2 = None
         self.refresh_rect()
@@ -373,13 +441,16 @@ class FastCropDialog:
 
     def refresh_rect(self):
         if self.rect_id1 is None:
-            self.rect_id1 = self.canvas.create_rectangle(*self.actual_crop, outline="black", dash=(8, 8))
+            self.rect_id1 = self.canvas.create_rectangle(*self.actual_crop,
+                                                         outline="black", dash=(8, 8))
         else:
             self.canvas.coords(self.rect_id1,
                                self.actual_crop[0], self.actual_crop[1],
                                self.actual_crop[2], self.actual_crop[3])
         if self.rect_id2 is None:
-            self.rect_id2 = self.canvas.create_rectangle(*self.actual_crop, outline="white", dash=(8, 8), dashoff=8)
+            self.rect_id2 = self.canvas.create_rectangle(*self.actual_crop,
+                                                         outline="white", dash=(8, 8),
+                                                         dashoff=8)
         else:
             self.canvas.coords(self.rect_id2,
                                self.actual_crop[0], self.actual_crop[1],

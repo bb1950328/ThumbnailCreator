@@ -66,5 +66,6 @@ class ffmpegGUI:
         pass
 
 
-fg = ffmpegGUI()
-fg.run()
+def run():
+    fg = ffmpegGUI()
+    fg.run()
