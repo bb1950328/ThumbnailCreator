@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/YT_Toolbox.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YT_Toolbox_Start.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/no_icon_found.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/toolbox.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/start_directly.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/thumbnailCreatorTool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/ffmpegGUI/ffmpegGUITool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ffmpegGUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ffmpegGUI/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ThumbnailCreator/sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -402,7 +385,7 @@
       <workItem from="1544599484839" duration="4174000" />
       <workItem from="1544611579742" duration="242000" />
       <workItem from="1546588944426" duration="92000" />
-      <workItem from="1546589068513" duration="719000" />
+      <workItem from="1546589068513" duration="1447000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -628,11 +611,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544611380561</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added ffmpegGUI to YT_Toolbox_Start">
+      <created>1546589851787</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1546589851787</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46501000" />
+    <option name="totallyTimeSpent" value="47229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
@@ -692,7 +682,8 @@
     <MESSAGE value="stickers treeview resizes correctly now" />
     <MESSAGE value="moved sticker button events to control" />
     <MESSAGE value="added logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="added logger" />
+    <MESSAGE value="added ffmpegGUI to YT_Toolbox_Start" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ffmpegGUI to YT_Toolbox_Start" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
