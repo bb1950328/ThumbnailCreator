@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9d5945-58db-46ba-922b-386c47bc5732" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/ffmpegGUI/start_directly.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/ffmpegGUI/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/ffmpegGUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ffmpegGUI/gui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,14 +93,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/ffmpegGUI/gui.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="671">
-              <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tools/ffmpegGUI/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -183,6 +191,7 @@
         <option value="$PROJECT_DIR$/YT_Toolbox_Start.py" />
         <option value="$PROJECT_DIR$/tools/ffmpegGUI/start_directly.py" />
         <option value="$PROJECT_DIR$/tools/ffmpegGUI/gui.py" />
+        <option value="$PROJECT_DIR$/tools/ffmpegGUI/model.py" />
       </list>
     </option>
   </component>
@@ -419,7 +428,7 @@
       <workItem from="1544599484839" duration="4174000" />
       <workItem from="1544611579742" duration="242000" />
       <workItem from="1546588944426" duration="92000" />
-      <workItem from="1546589068513" duration="4423000" />
+      <workItem from="1546589068513" duration="5770000" />
     </task>
     <task id="LOCAL-00001" summary="worked at stickers classes">
       <created>1540979198289</created>
@@ -659,14 +668,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546592010057</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added some widgets to the GUI">
+      <created>1546678975261</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1546678975261</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50205000" />
+    <option name="totallyTimeSpent" value="51552000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
+    <frame x="-7" y="-7" width="2208" height="1208" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49953574" visible="true" weight="0.17255814" />
@@ -724,7 +740,8 @@
     <MESSAGE value="moved sticker button events to control" />
     <MESSAGE value="added logger" />
     <MESSAGE value="added ffmpegGUI to YT_Toolbox_Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ffmpegGUI to YT_Toolbox_Start" />
+    <MESSAGE value="added some widgets to the GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some widgets to the GUI" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -929,10 +946,17 @@
     <entry file="file://$PROJECT_DIR$/tools/ffmpegGUI/gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
-          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/ffmpegGUI/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
